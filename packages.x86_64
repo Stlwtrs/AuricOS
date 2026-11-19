@@ -205,3 +205,10 @@ gvfs
 
 # setup
 calamares
+
+# Security Hardening
+ufw
+apparmor
+audit
+lynis
+arch-audit
