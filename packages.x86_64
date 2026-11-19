@@ -206,7 +206,7 @@ gvfs
 # setup
 calamares
 
-# Security Hardening
+# Security Hardening Measures
 ufw
 apparmor
 audit
@@ -214,3 +214,4 @@ lynis
 arch-audit
 sysstat
 libpwquality
+aide
