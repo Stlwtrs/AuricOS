@@ -1,0 +1,51 @@
+#!/bin/bash
+export GTK_THEME=Adwaita:dark
+command -v yad >/dev/null || exit 1
+
+if [ -n "$AURIC_BARE_X" ]; then
+    xsetroot -cursor_name left_ptr
+	feh --bg-fill /usr/share/backgrounds/auricos/AURIC-113.jpg & xfwm4 --compositor=off & sleep 1
+fi
+
+err() { yad --center --title="AuricOS" --text="$1" --button=OK:0; }
+
+form=(
+	yad --form --center --width=420
+	--title="Welcome to AuricOS"
+	--text="Create your account"
+	--field="Full name"
+	--field="Username"
+	--field="Password:H"
+	--field="Confirm password:H"
+	--button="Create account:0"
+	--separator="|"
+)
+
+while true; do
+	out=$("${form[@]}") || continue
+	IFS='|' read -r full user pass1 pass2 _ <<< "$out"
+	[[ "$user" =~ ^[a-z_][a-z0-9_-]{0,31}$ ]] || { err "Username: lowercase letters, numbers, - or _ only."; continue; }
+	id "$user" &>/dev/null && { err "That username is taken."; continue; }
+	[ -n "$pass1" ] && [ "$pass1" = "$pass2" ] || { err "Passwords are empty or don't match."; continue; }
+	break
+done
+
+useradd -m -c "$full" -G wheel,audio,video,storage -s /usr/bin/zsh "$user"
+printf '%s:%s\n' "$user" "$pass1" | chpasswd
+echo '%wheel ALL=(ALL:ALL) ALL' > /etc/sudoers.d/10-wheel
+mkdir -p /var/lib/auricos
+touch /var/lib/auricos/firstboot-done
+
+# Create the standard directory structure
+sudo -u $user mkdir -p /home/$user/Desktop
+sudo -u $user mkdir -p /home/$user/Documents
+sudo -u $user mkdir -p /home/$user/Downloads
+sudo -u $user mkdir -p /home/$user/Music
+sudo -u $user mkdir -p /home/$user/Pictures
+sudo -u $user mkdir -p /home/$user/Videos
+sudo -u $user mkdir -p /home/$user/Public
+sudo -u $user mkdir -p /home/$user/Templates
+
+# Create Custom AuricOS Directories
+sudo -u $user mkdir -p /home/$user/Tools
+sudo -u $user mkdir -p /home/$user/Projects

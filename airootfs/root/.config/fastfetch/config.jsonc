@@ -1,0 +1,37 @@
+{
+	"logo": {
+		"color": { "1": "yellow", "2": "yellow" }
+	},
+    "display": {
+    	"color": {
+    		"keys": "yellow",
+    		"title": "yellow",
+    		"output": "white"
+    	}
+    },
+    "modules": [
+    	"title",
+    	"separator",
+    	"os",
+    	"host",
+    	"kernel",
+    	"uptime",
+    	"packages",
+    	"shell",
+    	"display",
+    	"de",
+    	"wm",
+    	"theme",
+    	"icons",
+    	"font",
+    	"terminal",
+    	"terminalfont",
+    	"cpu",
+    	"gpu",
+    	"memory",
+    	"disk",
+    	"localip",
+    	"break",
+    	"colors"
+    ]    
+}

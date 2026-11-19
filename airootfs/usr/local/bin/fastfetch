@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/bin/fastfetch-bin --file /usr/share/auricos/logo.txt

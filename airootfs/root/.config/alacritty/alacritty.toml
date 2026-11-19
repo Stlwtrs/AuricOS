@@ -1,0 +1,39 @@
+[window]
+opacity = 0.85
+padding = { x = 8, y = 8 }
+
+[font]
+normal = { family = "JetBrains Mono", style = "Regular" }
+size = 11
+
+[colors.primary]
+background = "#0b0d1a"
+foreground = "#f2c94c"
+
+[colors.cursor]
+text = "#0b0d1a"
+cursor = "#ffd75e"
+
+[colors.selection]
+text = "#0b0d1a"
+background = "#d9a520"
+
+[colors.normal]
+black = "#1a1c2e"
+red = "#e5634d"
+green = "#a8b545"
+yellow = "#f2c94c"
+blue = "#7c8cc4"
+magenta = "#c9879b"
+cyan = "#6fb5a8"
+white = "#e8dcc0"
+
+[colors.bright]
+black = "#4a4c66"
+red = "#ff7b63"
+green = "#c4d15a"
+yellow = "#ffd75e"
+blue = "#9aa9e0"
+magenta = "#e6a0b5"
+cyan = "#8dd1c4"
+white = "#fff4d6"

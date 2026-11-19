@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+ROOT=$(findmnt -rn -o TARGET | grep -m1 -E '^/tmp/calamares-root-[^/]+$')
+[ -n "$ROOT" ] || { echo "install target not found" >&2; exit 1; }
+for k in /run/archiso/bootmnt/arch/boot/x86_64/vmlinuz-*; do
+	install -Dm644 "$k" "$ROOT/boot/$(basename "$k")"
+done

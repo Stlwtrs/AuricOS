@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Install AuricOS
+GenericName=System Installer
+Comment=Install AuricOS to your computer
+Exec=pkexec /usr/bin/calamares
+Icon=auricos-logo
+Terminal=false
+StartupNotify=true
+Categories=System;
+Keywords=install;installer;calamares;

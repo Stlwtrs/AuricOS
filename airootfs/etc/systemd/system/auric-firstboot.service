@@ -1,0 +1,12 @@
+[Unit]
+Description=AuricOS first boot account setup
+CondtionPathExists=!/var/lib/auricos/firstboot-done
+Before=display-manager.service lightdm.service
+
+[Service]
+Type=oneshot
+Environment=HOME=/root AURIC_BARE_X=1
+ExecStart=/usr/bin/xinit /usr/local/bin/auric-firstboot -- :1 vt7 -nolisten tcp
+
+[Install]
+WantedBy=multi-user.target

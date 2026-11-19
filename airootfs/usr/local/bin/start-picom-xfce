@@ -1,0 +1,10 @@
+#!/bin/bash
+
+xfconf-query --channel=xfwm4 
+	--property=/general/use_compositing
+	--set=false
+
+# Let XFCE apply the setting before Picom officially starts
+sleep 1
+
+exec picom --daemon
