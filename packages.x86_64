@@ -212,3 +212,5 @@ apparmor
 audit
 lynis
 arch-audit
+sysstat
+libpwquality

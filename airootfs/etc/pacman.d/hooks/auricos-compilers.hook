@@ -1,0 +1,17 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/bin/gcc
+Target = usr/bin/g++
+Target = usr/bin/cc
+Target = usr/bin/c++
+Target = usr/bin/as
+Target = usr/bin/ld
+Target = usr/bin/clang
+Target = usr/bin/clang++
+
+[Action]
+Description = AuricOS: restricting compilers to the wheel group
+When = PostTransaction
+Exec = /usr/local/bin/auric-restrict-compilers

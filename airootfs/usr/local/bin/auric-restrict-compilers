@@ -1,0 +1,6 @@
+#!/bin/bash
+for f in /usr/bin/{gcc,g++,cc,c++,as,ld,clang,clang++}; do
+ [ -e "$f" ] || continue
+ chown root:wheel "$f"
+ chmod 750 "$f"
+done
