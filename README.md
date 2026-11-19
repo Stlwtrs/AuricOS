@@ -1,4 +1,4 @@
-Markdown · README.md
+
 
 ![AuricOS logo](airootfs/usr/share/pixmaps/auricos-logo.png)
 
