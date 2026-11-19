@@ -1,6 +1,7 @@
 
 
-<img width="7600" height="5460" alt="auricos-github" src="https://github.com/user-attachments/assets/a6902bbe-e223-4ebc-9bfd-db42821ee10a" />
+<img width="1024" height="736" alt="auricos-github-2" src="https://github.com/user-attachments/assets/d90a4ccb-4159-4ce3-a958-b57e7d0239d0" />
+
 
 
 # AuricOS
