@@ -4,33 +4,41 @@
 
 
 
+
+
 # AuricOS
 
 **A security-hardened, Arch-based desktop distribution with a custom graphical installer.**
 
-![Base](https://img.shields.io/badge/base-Arch%20Linux-1793D1?logo=archlinux&logoColor=white) ![Kernel](https://img.shields.io/badge/kernel-CachyOS%20BORE-f2c94c) ![Desktop](https://img.shields.io/badge/desktop-XFCE-2284F2?logo=xfce&logoColor=white) ![Installer](https://img.shields.io/badge/installer-Calamares%203.4-0b0d1a) ![Lynis](https://img.shields.io/badge/Lynis%20hardening%20index-64%20%E2%86%92%2078-2ea44f)
+![Status](https://img.shields.io/badge/status-active%20development-orange) ![Version](https://img.shields.io/badge/version-1.0--beta-f2c94c) ![License](https://img.shields.io/badge/license-GPL--3.0-blue) ![Base](https://img.shields.io/badge/base-Arch%20Linux-1793D1?logo=archlinux&logoColor=white) ![Kernel](https://img.shields.io/badge/kernel-CachyOS%20BORE-f2c94c) ![Desktop](https://img.shields.io/badge/desktop-XFCE-2284F2?logo=xfce&logoColor=white) ![Installer](https://img.shields.io/badge/installer-Calamares%203.4-0b0d1a) ![Lynis](https://img.shields.io/badge/Lynis%20hardening%20index-64%20%E2%86%92%2078-2ea44f)
 
 ---
 
 ## Table of Contents
 
 1. [Overview](#overview)
-2. [Highlights](#highlights)
-3. [Security Hardening](#security-hardening)
+2. [Project Status](#project-status)
+3. [Highlights](#highlights)
+4. [Screenshots](#screenshots)
+5. [Security Hardening](#security-hardening)
    - [Measured Results](#measured-results)
    - [Controls Implemented](#controls-implemented)
    - [Accepted Findings and Risk Decisions](#accepted-findings-and-risk-decisions)
-4. [Architecture](#architecture)
+6. [Architecture](#architecture)
    - [System Composition](#system-composition)
    - [Installer Pipeline](#installer-pipeline)
    - [Software Supply Chain](#software-supply-chain)
-5. [Repository Layout](#repository-layout)
-6. [Building AuricOS](#building-auricos)
-7. [Testing and Verification](#testing-and-verification)
-8. [First-Login Steps](#first-login-steps)
-9. [Engineering Challenges and Lessons Learned](#engineering-challenges-and-lessons-learned)
-10. [Roadmap](#roadmap)
-11. [Disclaimer](#disclaimer)
+7. [Repository Layout](#repository-layout)
+8. [Building AuricOS](#building-auricos)
+9. [Testing and Verification](#testing-and-verification)
+10. [First-Login Steps](#first-login-steps)
+11. [Engineering Challenges and Lessons Learned](#engineering-challenges-and-lessons-learned)
+12. [Roadmap](#roadmap)
+13. [Contributing and Security Reports](#contributing-and-security-reports)
+14. [Supporting AuricOS](#supporting-auricos)
+15. [About the Name](#about-the-name)
+16. [License](#license)
+17. [Disclaimer](#disclaimer)
 
 ---
 
@@ -48,6 +56,31 @@ AuricOS pairs Arch Linux's packages and rolling updates with the **CachyOS BORE 
 
 ---
 
+## Project Status
+
+> **AuricOS is in active development (v1.0 beta).** The live ISO, installer, and hardened installed system are functional and tested in QEMU/KVM. Pre-built ISOs are not yet published; see [Building AuricOS](#building-auricos) to build from source.
+
+| Component | Status |
+| --- | --- |
+| Live ISO (BIOS) | ✅ Working |
+| Calamares installer | ✅ Working |
+| Hardening (3 rounds) | ✅ Complete, Lynis 64 → 78 |
+| CachyOS BORE kernel | ✅ Working |
+| UEFI installation | 🔄 Configured, testing in progress |
+| Physical hardware | 🔄 Planned |
+| Live-session auto-login | 🔄 Planned |
+| Pre-built ISO releases | 🔄 Planned |
+
+**Development time:** approximately 70 hours as of November 19, 2026.
+
+Changes are tracked in [CHANGELOG.md](CHANGELOG.md).
+
+### How AuricOS Was Built
+
+AuricOS was developed with substantial assistance from **Claude** (Anthropic's AI assistant), which drafted much of the configuration and many of the commands used in the project. The author set the project's direction and design decisions, built and tested every ISO, and verified each change on fresh installations, catching and debugging issues along the way. All hardening results in this README come from Lynis audits run on those test installs.
+
+---
+
 ## Highlights
 
 | Area | What AuricOS delivers |
@@ -59,6 +92,18 @@ AuricOS pairs Arch Linux's packages and rolling updates with the **CachyOS BORE 
 | **Supply chain** | AUR packages built in clean chroots, PGP-verified upstream sources, served from a local signed-off repository |
 | **Privacy** | Mullvad Browser, Tor Browser, and LibreWolf preinstalled; SSH disabled; root account locked |
 | **Desktop** | XFCE with a custom panel layout, Alacritty terminal (transparent, gold palette), zsh, fastfetch, and a unified wallpaper and login theme |
+
+---
+
+## Screenshots
+
+| Desktop | Installer |
+| --- | --- |
+| ![AuricOS desktop](docs/screenshots/desktop.png) | ![Calamares installer](docs/screenshots/installer.png) |
+| **Login screen** | **Installer slideshow** |
+| ![LightDM login screen](docs/screenshots/login.png) | ![Installer slideshow](docs/screenshots/slideshow.png) |
+| **Audit logging (auditd)** | **File integrity (AIDE)** |
+| ![auditd event](docs/screenshots/auditd.png) | ![AIDE check](docs/screenshots/aide.png) |
 
 ---
 
@@ -242,10 +287,14 @@ AuricOS/
 │       ├── local/bin/                # Installer and hardening helper scripts
 │       └── share/                    # Branding assets, installer launcher, staged config files
 ├── grub/ syslinux/ efiboot/          # Boot menu configuration (BIOS and UEFI)
-├── docs/                             # Lynis reports for each hardening round
+├── docs/                             # Lynis reports, screenshots, logo, PGP public key
+├── scripts/                          # Maintainer tooling (pre-publication checks)
+├── .github/                          # Issue templates and funding configuration
 ├── packages.x86_64                   # Package list
 ├── pacman.conf                       # Build-time repository configuration
-└── profiledef.sh                     # ISO metadata and file permissions
+├── profiledef.sh                     # ISO metadata and file permissions
+├── CHANGELOG.md  CONTRIBUTING.md  SECURITY.md
+└── LICENSE                           # GPL-3.0
 ```
 
 ---
@@ -362,6 +411,60 @@ Selected problems encountered during development, and how they were diagnosed:
 - [ ] Optional full-disk encryption (LUKS) in the installer
 - [ ] Custom AppArmor profiles for bundled applications
 - [ ] Automated ISO builds and verification in CI
+- [ ] Signed ISO releases with published checksums
+
+---
+
+## Contributing and Security Reports
+
+Bug reports, testing feedback, and hardening suggestions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for how to build, test, and submit changes.
+
+**Found a security issue?** Please do not open a public issue. Follow the private reporting process in [SECURITY.md](SECURITY.md).
+
+---
+
+## Supporting AuricOS
+
+AuricOS is developed independently. Donations fund testing hardware, build infrastructure, and development time.
+
+| Method | Details |
+| --- | --- |
+| **USD** | [Sponsor on GitHub](https://github.com/sponsors/Stlwtrs) |
+| **Monero (XMR)** | `YOUR_MONERO_SUBADDRESS` |
+| **Bitcoin (BTC)** | `YOUR_BITCOIN_ADDRESS` |
+
+> **Verify before sending.** Donation addresses are published only in this repository. Confirm they match the PGP-signed copy in [`DONATE.asc`](DONATE.asc), verifiable with the project's public key in [`docs/pgp-key.asc`](docs/pgp-key.asc):
+> 
+> ```bash
+> gpg --import docs/pgp-key.asc
+> gpg --verify DONATE.asc
+> ```
+
+---
+
+## About the Name
+
+AuricOS is named after **Auric Ore** from the [Calamity Mod](https://calamitymod.com/) for Terraria. Auric gear is late-game material: forged from the hardest-won resources in the game, and strong enough to stand up to its toughest bosses. It is the gold standard of the mod's arsenal, and that is the bar AuricOS aims for as a secure desktop and is exactly why I chose this name for the OS.
+
+The name also sets the project's visual identity, from the gold-and-navy theme to the logo.
+
+If you play Terraria, check out the Calamity Mod and support the team behind it:
+
+|  |  |
+| --- | --- |
+| **Official website** | [calamitymod.com](https://calamitymod.com/) |
+| **Wiki** | [calamitymod.wiki.gg](https://calamitymod.wiki.gg/) |
+| **Steam Workshop** | [Calamity Mod on Steam](https://steamcommunity.com/sharedfiles/filedetails/?id=2824688072) |
+| **Source (public mirror)** | [CalamityTeam/CalamityModPublic](https://github.com/CalamityTeam/CalamityModPublic) |
+| **Support the developers** | [Patreon](https://patreon.com/CalamityMod) |
+
+> AuricOS is an independent project and is not affiliated with or endorsed by the Calamity Mod team or Re-Logic. Terraria is a trademark of Re-Logic.
+
+---
+
+## License
+
+AuricOS is licensed under the [GNU General Public License v3.0](LICENSE), consistent with [archiso](https://gitlab.archlinux.org/archlinux/archiso), on which the build profile is based. Bundled third-party software remains under its respective licenses.
 
 ---
 
