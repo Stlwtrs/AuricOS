@@ -1,6 +1,7 @@
 
 
-![AuricOS logo](airootfs/usr/share/pixmaps/auricos-logo.png)
+<img width="7600" height="5460" alt="auricos-github" src="https://github.com/user-attachments/assets/a6902bbe-e223-4ebc-9bfd-db42821ee10a" />
+
 
 # AuricOS
 
