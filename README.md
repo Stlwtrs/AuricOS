@@ -77,7 +77,7 @@ Changes are tracked in [CHANGELOG.md](CHANGELOG.md).
 
 ### How AuricOS Was Built
 
-AuricOS was developed with substantial assistance from **Claude** (Anthropic's AI assistant), which drafted much of the configuration and many of the commands used in the project. The author set the project's direction and design decisions, built and tested every ISO, and verified each change on fresh installations, catching and debugging issues along the way. All hardening results in this README come from Lynis audits run on those test installs.
+AuricOS was developed with substantial assistance from **Claude** (Anthropic's AI assistant), which drafted much of the configuration and many of the commands used in the project. I myself set the project's direction and design decisions, built and tested every ISO, and verified each change on fresh installations, catching and debugging issues along the way. All hardening results in this README come from Lynis audits run on those test installs.
 
 ---
 
