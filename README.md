@@ -1,6 +1,6 @@
 
 
-<img src="docs/logo.png" alt="AuricOS logo" width="520">
+<img src="docs/logo.png" alt="AuricOS logo" width="1040">
 
 
 
