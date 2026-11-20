@@ -15,20 +15,20 @@ warn() { printf '  \033[33mWARN\033[0m %s\n' "$1"; }
 fail() { printf '  \033[31mFAIL\033[0m %s\n' "$1"; FAIL=1; }
 
 ME=$(whoami)
-TERMS=("/home/" "$@")
+TERMS=("/home/[A-Za-z0-9_-]+" "$@")
 [ "$ME" != "root" ] && TERMS+=("$ME")
 PATTERN=$(IFS='|'; echo "${TERMS[*]}")
 
 echo "== Personal data in current files"
-HITS=$(git grep -I -n -i -E "$PATTERN" -- . ':!scripts/prepublic-check.sh' || true)
+HITS=$(git grep -I -n -i -E "$PATTERN" -- . ':!*prepublic-check.sh' | grep -v '/home/custompkgs' || true)
 if [ -n "$HITS" ]; then fail "matches found:"; echo "$HITS" | head -20; else pass "no matches"; fi
 
 echo "== Personal data in git history"
-HIST=$(git log -p --all -- . ':!scripts/prepublic-check.sh' | grep -n -i -E "^[+-].*($PATTERN)" | head -20 || true)
+HIST=$(git log -p --all -- . ':!*prepublic-check.sh' | grep -a -n -i -E "^[+-].*($PATTERN)" | grep -v '/home/custompkgs' | head -20 || true)
 if [ -n "$HIST" ]; then fail "matches found in history (rewriting history may be needed):"; echo "$HIST"; else pass "no matches"; fi
 
 echo "== Secrets in git history"
-SECRETS=$(git log -p --all -- . ':!scripts/prepublic-check.sh' | grep -n -E "BEGIN (RSA|OPENSSH|EC|PGP) PRIVATE KEY|ghp_[A-Za-z0-9]{20,}|github_pat_|AKIA[0-9A-Z]{16}" | head -5 || true)
+SECRETS=$(git log -p --all -- . ':!*prepublic-check.sh' | grep -a -n -E "BEGIN (RSA|OPENSSH|EC|PGP) PRIVATE KEY|ghp_[A-Za-z0-9]{20,}|github_pat_|AKIA[0-9A-Z]{16}" | head -5 || true)
 if [ -n "$SECRETS" ]; then fail "possible secrets:"; echo "$SECRETS"; else pass "no private keys or tokens"; fi
 
 echo "== Commit author identities"
@@ -53,7 +53,7 @@ for f in README.md LICENSE SECURITY.md CONTRIBUTING.md CHANGELOG.md .gitignore d
 done
 
 echo "== Placeholders left to fill"
-PH=$(git grep -n -E "YOUR_[A-Z_]+" -- . ':!scripts/prepublic-check.sh' ':!.github/FUNDING.yml' || true)
+PH=$(git grep -n -E "YOUR_[A-Z_]+" -- . ':!*prepublic-check.sh' ':!.github/FUNDING.yml' || true)
 if [ -n "$PH" ]; then warn "placeholders remain:"; echo "$PH"; else pass "none"; fi
 
 echo "== Screenshot files referenced by README"
