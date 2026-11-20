@@ -430,8 +430,8 @@ AuricOS is developed independently. Donations fund testing hardware, build infra
 | Method | Details |
 | --- | --- |
 | **USD** | [Sponsor on GitHub](https://github.com/sponsors/Stlwtrs) |
-| **Monero (XMR)** | `YOUR_MONERO_SUBADDRESS` |
-| **Bitcoin (BTC)** | `YOUR_BITCOIN_ADDRESS` |
+| **Monero (XMR)** | `858qRMmuqwCe1aWTukeVK2LQ1F1uNT6rD2WwEpA7ixP6V8M6LPzGSC8gUgdZKBFTs9iD7hWG7CDx5dMWJx5BfdGeLULkZBz` |
+| **Bitcoin (BTC)** | `bc1qfs2l0qhcrfgq3mywvzewc3kwpvfmn4p4egku96` |
 
 > **Verify before sending.** Donation addresses are published only in this repository. Confirm they match the PGP-signed copy in [`DONATE.asc`](DONATE.asc), verifiable with the project's public key in [`docs/pgp-key.asc`](docs/pgp-key.asc):
 > 
