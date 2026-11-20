@@ -3,7 +3,6 @@ cachyos-mirrorlist
 alsa-utils
 amd-ucode
 arch-install-scripts
-archinstall
 b43-fwcutter
 base
 bcachefs-tools
@@ -11,15 +10,11 @@ bind
 bolt
 brltty
 btrfs-progs
-clonezilla
-cloud-init
 cryptsetup
-darkhttpd
 ddrescue
 dhcpcd
 diffutils
 dmidecode
-dmraid
 dnsmasq
 dosfstools
 e2fsprogs
@@ -31,9 +26,7 @@ exfatprogs
 f2fs-tools
 fatresize
 foot-terminfo
-fsarchiver
 ghostty-terminfo
-gpart
 gpm
 gptfdisk
 grml-zsh-config
@@ -41,7 +34,6 @@ grub
 hdparm
 hyperv
 intel-ucode
-irssi
 iw
 iwd
 jfsutils
@@ -49,18 +41,16 @@ kitty-terminfo
 kmscon-terminfo
 ldns
 less
-lftp
 libfido2
 libusb-compat
 #linux
 #linux-headers
 linux-cachyos-bore
-linux-cachyos-bore-headers
 linux-firmware-marvell
+linux-firmware
 livecd-sounds
 lsscsi
 lvm2
-lynx
 man-db
 man-pages
 mc
@@ -73,12 +63,10 @@ mkinitcpio-nfs-utils
 mmc-utils
 modemmanager
 mtools
-nano
 nbd
 ndisc6
 nfs-utils
 nilfs-utils
-nmap
 ntfsprogs
 nvme-cli
 open-iscsi
@@ -87,15 +75,11 @@ openconnect
 openpgp-card-tools
 openssh
 openvpn
-partclone
 parted
-partimage
 pcsclite
 ppp
-pptpclient
 pv
 qemu-guest-agent
-refind
 reflector
 rsync
 rxvt-unicode-terminfo
@@ -109,26 +93,21 @@ squashfs-tools
 sudo
 syslinux
 systemd-resolvconf
-tcpdump
 terminus-font
 testdisk
-tmux
 tpm2-tools
 tpm2-tss
 udftools
 usb_modeswitch
 usbmuxd
 usbutils
-vim
 virtualbox-guest-utils-nox
 vpnc
 wireless-regdb
 wireless_tools
 wpa_supplicant
-wvdial
 xdg-utils
 xfsprogs
-xl2tpd
 zsh
 xfce4
 xfce4-whiskermenu-plugin
@@ -141,7 +120,6 @@ xfce4-settings
 lightdm
 lightdm-gtk-greeter
 network-manager-applet
-xf86-video-qxl
 nmap
 metasploit
 hydra
@@ -149,14 +127,9 @@ gobuster
 wireshark-qt
 python
 git
-ufw
-apparmor
 fastfetch
-clamav
-lynis
 rkhunter
 tcpdump
-audit
 smbclient
 impacket
 sqlmap
@@ -167,7 +140,6 @@ python-requests
 python-cryptography
 python-pwntools
 gdb
-neovim
 tmux
 htop
 tree
@@ -196,11 +168,7 @@ yad
 xfwm4
 xorg-xsetroot
 
-# File Manager
-dolphin
-kde-cli-tools
-qt5ct
-breeze-gtk
+# Misc Leftover
 gvfs
 
 # setup
@@ -215,3 +183,8 @@ arch-audit
 sysstat
 libpwquality
 aide
+
+# Terminal Editor(s)
+nano
+neovim
+micro
