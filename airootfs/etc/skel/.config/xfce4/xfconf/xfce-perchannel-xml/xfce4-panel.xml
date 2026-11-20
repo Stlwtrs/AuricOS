@@ -26,6 +26,7 @@
     <property name="indicator-style" type="uint" value="1"/>
     <property name="pinned" type="array">
       <value type="string" value="org.torproject.torbrowser-launcher.desktop"/>
+      <value type="string" value="librewolf.desktop"/>
     </property>
   </property>
 

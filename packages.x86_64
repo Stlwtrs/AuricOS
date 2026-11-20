@@ -153,6 +153,7 @@ xorg-xinit
 #Browsers
 torbrowser-launcher
 mullvad-browser-bin
+librewolf-bin
 
 # Taskbar & Others (Modernization)
 xfce4-docklike-plugin
