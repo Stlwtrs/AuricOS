@@ -71,7 +71,7 @@ AuricOS pairs Arch Linux's packages and rolling updates with the **CachyOS BORE 
 | Live-session auto-login | 🔄 Planned |
 | Pre-built ISO releases | 🔄 Planned |
 
-**Development time:** approximately 70 hours as of November 19, 2026.
+**Development time:** approximately 88 hours as of November 20, 2026.
 
 Changes are tracked in [CHANGELOG.md](CHANGELOG.md).
 
