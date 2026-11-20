@@ -429,7 +429,7 @@ AuricOS is developed independently. Donations fund testing hardware, build infra
 
 | Method | Details |
 | --- | --- |
-| **USD** | [Sponsor on GitHub](https://github.com/sponsors/Stlwtrs) |
+| **USD** | [Sponsor on GitHub](https://github.com/sponsors/Stlwtrs) | *(Coming Soon!)*
 | **Monero (XMR)** | `858qRMmuqwCe1aWTukeVK2LQ1F1uNT6rD2WwEpA7ixP6V8M6LPzGSC8gUgdZKBFTs9iD7hWG7CDx5dMWJx5BfdGeLULkZBz` |
 | **Bitcoin (BTC)** | `bc1qfs2l0qhcrfgq3mywvzewc3kwpvfmn4p4egku96` |
 
