@@ -1,6 +1,6 @@
 
 
-<img src="docs/logo.png" alt="AuricOS logo" width="520">
+<img src="docs/logo.png" alt="AuricOS logo" width="1040">
 
 
 
@@ -71,7 +71,7 @@ AuricOS pairs Arch Linux's packages and rolling updates with the **CachyOS BORE 
 | Live-session auto-login | 🔄 Planned |
 | Pre-built ISO releases | 🔄 Planned |
 
-**Development time:** approximately 70 hours as of November 19, 2026.
+**Development time:** approximately 88 hours as of November 20, 2026.
 
 Changes are tracked in [CHANGELOG.md](CHANGELOG.md).
 
@@ -429,7 +429,7 @@ AuricOS is developed independently. Donations fund testing hardware, build infra
 
 | Method | Details |
 | --- | --- |
-| **USD** | [Sponsor on GitHub](https://github.com/sponsors/Stlwtrs) |
+| **USD** | [Sponsor on GitHub](https://github.com/sponsors/Stlwtrs) | *(Coming Soon!)*
 | **Monero (XMR)** | `858qRMmuqwCe1aWTukeVK2LQ1F1uNT6rD2WwEpA7ixP6V8M6LPzGSC8gUgdZKBFTs9iD7hWG7CDx5dMWJx5BfdGeLULkZBz` |
 | **Bitcoin (BTC)** | `bc1qfs2l0qhcrfgq3mywvzewc3kwpvfmn4p4egku96` |
 
