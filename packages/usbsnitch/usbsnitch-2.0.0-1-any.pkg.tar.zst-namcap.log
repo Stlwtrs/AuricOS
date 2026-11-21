@@ -1,0 +1,2 @@
+WARNING: base-devel: unknown key '%INSTALLED_DB%' in local database
+usbsnitch W: Dependency included, but may not be needed ('libnotify')

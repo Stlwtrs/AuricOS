@@ -1,0 +1,27 @@
+# Maintainer: Stlwtrs <stlwtrs@proton.me>
+pkgname=usbsnitch
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Real-time USB device alerts with BadUSB detection, for USBGuard users"
+arch=('any')
+url="https://github.com/Stlwtrs/USBSnitch"
+license=('MIT')
+depends=('python' 'libnotify')
+optdepends=('usbguard: block unauthorized devices (USBSnitch reports its decisions)'
+            'hwdata: vendor and product names from usb.ids')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('f04c9a56326347157d7eb8ca5936c065d270767168bd373b0136eb1872d66ba4')
+
+check() {
+  cd "USBSnitch-$pkgver"
+  python -m unittest discover -s tests
+}
+
+package() {
+  cd "USBSnitch-$pkgver"
+  install -Dm755 usb-snitch.py "$pkgdir/usr/bin/usb-snitch"
+  install -Dm644 usb-snitch.service "$pkgdir/usr/lib/systemd/system/usb-snitch.service"
+  sed -i 's#/usr/local/bin/usb-snitch#/usr/bin/usb-snitch#' "$pkgdir/usr/lib/systemd/system/usb-snitch.service"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

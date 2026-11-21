@@ -1,0 +1,64 @@
+Decoding
+  [32mPASS[0m IPv4 listener
+  [32mPASS[0m IPv4 remote address
+  [32mPASS[0m TIME_WAIT state name
+  [32mPASS[0m IPv6 unspecified
+  [32mPASS[0m IPv6 loopback
+  [32mPASS[0m IPv4-mapped IPv6
+  [32mPASS[0m IPv6 link-local
+  [32mPASS[0m IPv6 zero compression
+  [32mPASS[0m IPv6 first longest zero run
+  [32mPASS[0m tcp6 protocol label
+Filtering
+  [32mPASS[0m default hides TIME_WAIT
+  [32mPASS[0m count matches filtered rows
+  [32mPASS[0m count with -a
+  [32mPASS[0m IPv4 only
+  [32mPASS[0m IPv6 only
+  [32mPASS[0m UDP unconnected socket
+  [32mPASS[0m UDP count
+Processes and alerts
+  [32mPASS[0m process mapped by inode
+  [32mPASS[0m suspicious path flagged
+  [32mPASS[0m alert exit code
+  [32mPASS[0m IPv4 watchlist hit
+  [32mPASS[0m IPv6 watchlist, any case
+  [32mPASS[0m only watchlisted rows flagged
+  [32mPASS[0m watchlist exit code
+  [32mPASS[0m no alerts exit code
+  [32mPASS[0m process mapping without GNU find (BusyBox fallback)
+Pure Bash guarantee
+  [32mPASS[0m decodes TCP and IPv6 with no external commands
+  [32mPASS[0m UDP with no external commands
+  [32mPASS[0m Unix sockets with no external commands
+  [32mPASS[0m JSON with no external commands
+  [32mPASS[0m watchlist with no external commands
+  [32mPASS[0m help with no external commands
+Unix sockets
+  [32mPASS[0m listening unix socket
+  [32mPASS[0m unix process mapping
+  [32mPASS[0m abstract socket
+  [32mPASS[0m path with spaces
+  [32mPASS[0m unnamed hidden by default
+  [32mPASS[0m unnamed shown with -a
+JSON
+  [32mPASS[0m TCP JSON lines are valid
+  [32mPASS[0m one JSON object per socket
+  [32mPASS[0m JSON alerts array
+  [32mPASS[0m unix JSON lines are valid (quotes in path escaped)
+  [32mPASS[0m unix JSON null path
+Saved files (-f)
+  [32mPASS[0m decodes a saved tcp6 table
+  [32mPASS[0m detects a saved udp table
+  [32mPASS[0m detects a saved unix table
+Output file
+  [32mPASS[0m file written
+  [32mPASS[0m no colour codes in file
+Usage errors
+  [32mPASS[0m unknown option exit code
+  [32mPASS[0m missing watchlist exit code
+  [32mPASS[0m missing tables exit code
+IPv6 decoding against Python's ipaddress (500 random addresses)
+  [32mPASS[0m all 500 match RFC 5952 formatting
+
+Passed: 52  Failed: 0

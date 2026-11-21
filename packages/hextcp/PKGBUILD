@@ -1,0 +1,26 @@
+# Maintainer: Stlwtrs <stlwtrs@proton.me>
+pkgname=hextcp
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Decode /proc/net socket tables in pure Bash, for systems without netstat, ss or lsof"
+arch=('any')
+url="https://github.com/Stlwtrs/hextcp"
+license=('MIT')
+depends=('bash')
+optdepends=('findutils: map sockets to processes (-p, -e)'
+            'glibc: reverse DNS lookups with getent (-r)')
+checkdepends=('python')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('92e9d06800476f3b9af81e6fd38fe0e36b5d95310478469bea2d6eb8d5b69c0b')
+
+check() {
+  cd "hextcp-$pkgver"
+  bash tests/run_tests.sh
+}
+
+package() {
+  cd "hextcp-$pkgver"
+  install -Dm755 hextcp.sh "$pkgdir/usr/bin/hextcp"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

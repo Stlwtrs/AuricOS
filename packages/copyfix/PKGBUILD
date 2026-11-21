@@ -1,0 +1,26 @@
+# Maintainer: Stlwtrs <stlwtrs@proton.me>
+pkgname=copyfix
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Detect page-cache tampering of executables (CVE-2026-31431, Copy Fail)"
+arch=('any')
+url="https://github.com/Stlwtrs/CopyFix"
+license=('MIT')
+depends=('python')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('6451c5c708695ebf71a8878ef7b172289c64d86fa5da777d53941c989b28c718')
+
+check() {
+  cd "CopyFix-$pkgver"
+  python -m unittest discover -s tests
+}
+
+package() {
+  cd "CopyFix-$pkgver"
+  install -Dm755 copyfix.py "$pkgdir/usr/bin/copyfix"
+  install -Dm644 contrib/copyfix.service "$pkgdir/usr/lib/systemd/system/copyfix.service"
+  install -Dm644 contrib/copyfix.timer "$pkgdir/usr/lib/systemd/system/copyfix.timer"
+  sed -i 's#/usr/local/bin/copyfix#/usr/bin/copyfix#' "$pkgdir/usr/lib/systemd/system/copyfix.service"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
