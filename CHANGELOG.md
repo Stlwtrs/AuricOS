@@ -17,9 +17,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 - Boot menus on BIOS and UEFI now say AuricOS instead of "Arch Linux install medium"
+- Images resized to the largest size they're shown at (wallpapers 3840 px wide, installer slides 1920 px, logos 1024 px), cutting them from 106 MB to 16 MB with no visible quality loss
 
 ### Removed
 - Live-session account-creation form (`auric-firstboot`) and `yad`
+- Unused images: a duplicate of the logo (`test_AURIC.png`) and the old first-boot background (`login.png`)
 
 ### Security
 - **Hardening round 1 (Lynis 64 → 72):** ufw default-deny firewall; AppArmor enabled via kernel parameter; auditd; 25 kernel and network sysctl controls; core dumps disabled; `arch-audit` and Lynis included

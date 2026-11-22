@@ -26,7 +26,6 @@ usermod -aG video,input root
 rm -f /tmp/.X0-lock
 
 # Force the wallpaper before XFCE starts up
-echo "feh --bg-fill /usr/share/backgrounds/auricos/login.png" >> /root/.xinitrc
 
 # Fix Fastfetch Branding
 # Renaming the Real Binary
