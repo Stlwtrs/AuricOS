@@ -246,7 +246,7 @@ Three custom `shellprocess` stages turn the live image into a clean, hardened in
 
 **2. `shellprocess@cleanup`** (runs inside the target)
 
-- Removes live-only components: archiso's initramfs override, root autologin, the live account-creation service, the `pacman-init` tmpfs keyring mount, mirror-selection and accessibility services
+- Removes live-only components: archiso's initramfs override, root autologin, the live user with its autologin, sudo and polkit rules, the `pacman-init` tmpfs keyring mount, mirror-selection and accessibility services
 - Removes the build-time local repository and its `pacman.conf` entry so installed systems update only from public mirrors
 - Uninstalls Calamares itself and swaps in a panel layout without the installer launcher
 - Initializes and populates a fresh pacman keyring
@@ -412,7 +412,7 @@ Selected problems encountered during development, and how they were diagnosed:
 
 ## Roadmap
 
-- [ ] Replace the live-session account form with an auto-login live user
+- [x] Replace the live-session account form with an auto-login live user
 - [ ] Per-service systemd sandboxing (`systemd-analyze security`) for exposed services (Lynis BOOT-5264)
 - [ ] UEFI install testing and Secure Boot investigation
 - [ ] Testing on physical hardware

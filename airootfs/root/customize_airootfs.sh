@@ -40,3 +40,24 @@ mkdir -p /root/Desktop /root/Documents /root/Downloads /root/Music /root/Picture
 
 # Open Dolphin on file open
 xdg-mime default org.kde.dolphin.desktop inode/directory
+
+# Live session user. LightDM logs it in automatically (lightdm.conf.d/50-auricos-live.conf).
+# Its password is locked: autologin doesn't need one, and nobody can log in as it remotely.
+# The installer deletes this user and every file below (shellprocess_cleanup.conf).
+groupadd -rf autologin
+useradd -m -u 1000 -c "AuricOS Live" -G wheel,autologin,audio,video,storage -s /usr/bin/zsh auric
+passwd -l auric
+
+# Passwordless sudo for the live user only
+printf 'auric ALL=(ALL:ALL) NOPASSWD: ALL\n' > /etc/sudoers.d/99-auricos-live
+chmod 440 /etc/sudoers.d/99-auricos-live
+
+# Let the live user start the installer (pkexec) without a password prompt
+cat > /etc/polkit-1/rules.d/49-auricos-live.rules <<'RULES'
+// Live session only. The installer deletes this file.
+polkit.addRule(function (action, subject) {
+    if (subject.user == "auric" && subject.local && subject.active) {
+        return polkit.Result.YES;
+    }
+});
+RULES
