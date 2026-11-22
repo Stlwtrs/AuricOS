@@ -189,3 +189,9 @@ aide
 nano
 neovim
 micro
+
+# AuricOS security tools
+copyfix
+hextcp
+usbsnitch
+hwdata
