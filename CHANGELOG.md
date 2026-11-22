@@ -24,6 +24,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Images resized to the largest size they're shown at (wallpapers 3840 px wide, installer slides 1920 px, logos 1024 px), cutting them from 106 MB to 16 MB with no visible quality loss
 
 ### Removed
+- picom and its configuration, which had never run: both config files named a nonexistent backend (`gix` instead of `glx`), and new users had no startup entry for it. Window transparency and shadows come from XFCE's built-in compositor
+- Unused leftovers from early development: `set-wallpaper.sh` (which would have turned XFCE's compositor off), `start-picom-xfce`, and an invalid `auric.desktop` login session
 - Live-session account-creation form (`auric-firstboot`) and `yad`
 - A stale copy of the build-time package repository (259 MB) that was being shipped inside the live filesystem, along with the live session's `[auricos-repo]` entry, which accepted packages without signature checks (`SigLevel = Optional TrustAll`)
 - Unused images: a duplicate of the logo (`test_AURIC.png`) and the old first-boot background (`login.png`)
