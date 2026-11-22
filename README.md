@@ -110,17 +110,22 @@ AuricOS was developed with substantial assistance from **Claude** (Anthropic's A
 ## Security Hardening
 
 ### Measured Results
-
-All scores come from **Lynis 3.1.7** (`lynis audit system --quick`) run on a **fresh installation** from each ISO build in a QEMU/KVM virtual machine, not from a live session. Full reports are kept in [`docs/`](docs/).
+All scores come from **Lynis 3.1.7** (`lynis audit system --quick`) run on a **fresh installation** from each ISO build in a QEMU/KVM virtual machine, not from a live session. What each round changed, how it was verified, and the problems found along the way are recorded in [`docs/hardening/`](docs/hardening/). Raw Lynis reports are in [`docs/lynis/`](docs/lynis/) from round 4 onward.
 
 | Stage | Changes | Tests run | Hardening index | Suggestions |
-| --- | --- | --- | --- | --- |
-| **Baseline** | Stock install | 239 | **64** | 30 |
-| **Round 1** | Firewall, AppArmor, auditd, kernel/network sysctl, core dumps disabled | 244 | **72** | — |
-| **Round 2** | Login banner, umask, password hashing and quality, protocol blacklist, compiler restriction, sysstat | 244 | **75** | 16 |
-| **Round 3** | auditd ruleset, AIDE, ufw sysctl fix, SSH config permissions | 247 | **78** | 13 |
+|---|---|:--:|:--:|:--:|
+| **[Baseline](docs/hardening/round-0-baseline.md)** | Stock install | 239 | **64** | 30 |
+| **[Round 1](docs/hardening/round-1.md)** | Firewall, AppArmor, auditd, kernel/network sysctl, core dumps disabled | 244 | **72** | — |
+| **[Round 2](docs/hardening/round-2.md)** | Login banner, umask, password hashing and quality, protocol blacklist, compiler restriction, sysstat | 244 | **75** | 16 |
+| **[Round 3](docs/hardening/round-3.md)** | auditd ruleset, AIDE, ufw sysctl fix, SSH config permissions | 247 | **78** | 13 |
+| **[Round 4](docs/hardening/round-4.md)** | Copy Fail mitigation (`algif_aead` blocked), bundled CopyFix, USBSnitch and hextcp, AIDE database exclusion | 247 | **78** | — |
+
+> **Why didn't round 4 raise the score?** Lynis has no tests for the Copy Fail vulnerability, USB device alerts or the bundled tools, so round 4 is verified with its own checks instead (listed in the [round 4 record](docs/hardening/round-4.md)). The unchanged test count shows the round broke no existing check.
 
 > **Why not 100?** Many Lynis checks reward server-oriented configurations (remote log hosts, separate `/var` partitions, configuration-management agents). Applying them to a single-user desktop would add complexity or break normal use without reducing meaningful risk. Every remaining finding is explained in [Accepted Findings](#accepted-findings-and-risk-decisions).
+
+
+
 
 ### Controls Implemented
 
