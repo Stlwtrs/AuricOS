@@ -168,7 +168,9 @@ All scores come from **Lynis 3.1.7** (`lynis audit system --quick`) run on a **f
 | Control | Implementation |
 | --- | --- |
 | Audit logging | `auditd` with 16 rules watching identity files, sudoers, PAM, SSH, sysctl, modprobe, firewall, AppArmor, and systemd unit changes, plus `sudo` execution and kernel module load/unload syscalls |
-| File integrity | AIDE baseline covering \~400,000 files, checked on a schedule by `aidecheck.timer` |
+| File integrity | AIDE baseline covering ~400,000 files, checked on a schedule by `aidecheck.timer`; AIDE's own database is excluded so it doesn't report itself |
+| Page-cache tampering | [CopyFix](https://github.com/Stlwtrs/CopyFix) scans setuid and setgid binaries on a schedule (`copyfix.timer`) |
+| USB device alerts | [USBSnitch](https://github.com/Stlwtrs/USBSnitch) alerts on every new USB device and flags BadUSB indicators (`usb-snitch.service`) |
 | Vulnerability awareness | `arch-audit` checks installed packages against Arch Linux security advisories |
 | System statistics | `sysstat` collection and summary timers |
 
