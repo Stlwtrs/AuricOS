@@ -31,6 +31,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Root account locked on all installations; SSH disabled by default
 
 ### Documentation
+- Release tooling: `scripts/release.sh` checks the ISO size, source state, tag and signing key, then writes a SHA-256 checksum, PGP signatures and draft release notes
+- `docs/verifying-releases.md` (how users check a download) and `docs/release-checklist.md` (maintainer steps for each release)
 - Per-round hardening records in `docs/hardening/`, and `scripts/lynis-capture.sh` for saving sanitized Lynis reports to `docs/lynis/`
 
 ### Fixed

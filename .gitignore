@@ -3,3 +3,4 @@ out/
 *.iso
 *.qcow2
 *.pkg.tar.zst
+release/

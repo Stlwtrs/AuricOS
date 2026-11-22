@@ -296,8 +296,8 @@ AuricOS/
 │       ├── local/bin/                # Installer and hardening helper scripts
 │       └── share/                    # Branding assets, installer launcher, staged config files
 ├── grub/ syslinux/ efiboot/          # Boot menu configuration (BIOS and UEFI)
-├── docs/                             # Lynis reports, screenshots, logo, PGP public key
-├── scripts/                          # Maintainer tooling (pre-publication checks)
+├── docs/                             # Hardening records, Lynis reports, release verification and checklist, PGP public key
+├── scripts/                          # Maintainer tooling (pre-publication checks, Lynis capture, release signing)
 ├── .github/                          # Issue templates and funding configuration
 ├── packages.x86_64                   # Package list
 ├── pacman.conf                       # Build-time repository configuration

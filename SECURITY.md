@@ -50,4 +50,10 @@ Please allow a reasonable time for a fix before public disclosure.
 
 ## Verifying Project Material
 
-Donation addresses and future release checksums are signed with the project's PGP key, published at [`docs/pgp-key.asc`](docs/pgp-key.asc). Treat any address or checksum that does not verify against this key as untrusted.
+Donation addresses and release ISOs are signed with the project's PGP key, published at [`docs/pgp-key.asc`](docs/pgp-key.asc):
+
+```text
+0454 4553 060C E6C6 2DA5  4EE1 E013 161D 5438 F94A
+```
+
+Treat any address, checksum or ISO that does not verify against this key as untrusted. Step-by-step instructions are in [Verifying a Release](docs/verifying-releases.md).
