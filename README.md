@@ -62,13 +62,14 @@ AuricOS pairs Arch Linux's packages and rolling updates with the **CachyOS BORE 
 
 | Component | Status |
 | --- | --- |
-| Live ISO (BIOS) | ✅ Working |
+| Live ISO (BIOS and UEFI) | ✅ Working |
 | Calamares installer | ✅ Working |
-| Hardening (3 rounds) | ✅ Complete, Lynis 64 → 78 |
+| Hardening (4 rounds) | ✅ Complete, Lynis 64 → 78 |
 | CachyOS BORE kernel | ✅ Working |
-| UEFI installation | 🔄 Configured, testing in progress |
+| UEFI installation | ✅ Tested in QEMU/KVM (OVMF), including the fallback boot path |
+| Secure Boot | ❌ Not supported yet: disable Secure Boot to boot AuricOS |
 | Physical hardware | 🔄 Planned |
-| Live-session auto-login | 🔄 Planned |
+| Live-session auto-login | ✅ Working |
 | Pre-built ISO releases | 🔄 Planned |
 
 **Development time:** approximately 88 hours as of November 20, 2026.
@@ -414,7 +415,8 @@ Selected problems encountered during development, and how they were diagnosed:
 
 - [x] Replace the live-session account form with an auto-login live user
 - [ ] Per-service systemd sandboxing (`systemd-analyze security`) for exposed services (Lynis BOOT-5264)
-- [ ] UEFI install testing and Secure Boot investigation
+- [x] UEFI install testing
+- [ ] Secure Boot support (signed bootloader and kernel)
 - [ ] Testing on physical hardware
 - [ ] Optional full-disk encryption (LUKS) in the installer
 - [ ] Custom AppArmor profiles for bundled applications

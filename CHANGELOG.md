@@ -12,6 +12,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Post-install pipeline that removes live-only components, the installer, and build-time repositories
 - CachyOS `linux-cachyos-bore` kernel, with `[cachyos]` prioritized below Arch repositories
 - Installer password policy (minimum 8 characters, no empty passwords) and `auricos` default hostname
+- Live session logs in automatically as a live user (`auric`) with a locked password; the installer removes the user and its autologin, sudo and polkit rules
+- UEFI installation tested in QEMU/KVM with OVMF, including booting through the fallback path when firmware boot entries are lost
+
+### Changed
+- Boot menus on BIOS and UEFI now say AuricOS instead of "Arch Linux install medium"
+
+### Removed
+- Live-session account-creation form (`auric-firstboot`) and `yad`
 
 ### Security
 - **Hardening round 1 (Lynis 64 → 72):** ufw default-deny firewall; AppArmor enabled via kernel parameter; auditd; 25 kernel and network sysctl controls; core dumps disabled; `arch-audit` and Lynis included
@@ -28,3 +36,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Installed systems using bash instead of zsh
 - Package database warnings caused by a build-host pacman field (`%INSTALLED_DB%`)
 - Installer launcher and Calamares remaining on installed systems
+- Root autologin line in `lightdm.conf` being copied to installed systems (blocked only by a PAM group check)
