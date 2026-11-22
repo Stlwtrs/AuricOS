@@ -13,9 +13,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - CachyOS `linux-cachyos-bore` kernel, with `[cachyos]` prioritized below Arch repositories
 - Installer password policy (minimum 8 characters, no empty passwords) and `auricos` default hostname
 - Live session logs in automatically as a live user (`auric`) with a locked password; the installer removes the user and its autologin, sudo and polkit rules
+- *Optional software* page in the installer: penetration-testing tools are downloaded from the Arch mirrors during installation, and skipped when offline
 - UEFI installation tested in QEMU/KVM with OVMF, including booting through the fallback path when firmware boot entries are lost
 
 ### Changed
+- Metasploit, Wireshark, hashcat, John the Ripper, Hydra, sqlmap, gobuster, Impacket and pwntools moved off the ISO to the installer's optional-software page, and the ISO's filesystem switched from zstd to xz compression, to fit under GitHub's 2 GiB release-file limit
 - Boot menus on BIOS and UEFI now say AuricOS instead of "Arch Linux install medium"
 - Images resized to the largest size they're shown at (wallpapers 3840 px wide, installer slides 1920 px, logos 1024 px), cutting them from 106 MB to 16 MB with no visible quality loss
 
