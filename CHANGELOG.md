@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Removed
 - Live-session account-creation form (`auric-firstboot`) and `yad`
+- A stale copy of the build-time package repository (259 MB) that was being shipped inside the live filesystem, along with the live session's `[auricos-repo]` entry, which accepted packages without signature checks (`SigLevel = Optional TrustAll`)
 - Unused images: a duplicate of the logo (`test_AURIC.png`) and the old first-boot background (`login.png`)
 
 ### Security
