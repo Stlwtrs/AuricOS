@@ -49,7 +49,7 @@ AuricOS is a custom Linux distribution built from scratch with [archiso](https:/
 The project had three goals:
 
 1. **Build a complete distribution end to end:** a live environment, a graphical installer, and an installed system that boots and updates cleanly.
-2. **Harden it measurably.** Every security change was validated against [Lynis](https://cisofy.com/lynis/) audits on fresh installs, raising the hardening index from **64 to 78** over three rounds.
+2. **Harden it measurably.** Every security change was validated against [Lynis](https://cisofy.com/lynis/) audits on fresh installs, raising the hardening index from **64 to 78** over four rounds.
 3. **Document the decisions,** including the recommendations deliberately *not* applied and why, so the security posture is explainable rather than just scored.
 
 AuricOS pairs Arch Linux's packages and rolling updates with the **CachyOS BORE kernel** for desktop responsiveness, and ships privacy-focused browsers alongside security tooling.
@@ -149,6 +149,7 @@ All scores come from **Lynis 3.1.7** (`lynis audit system --quick`) run on a **f
 | BPF hardening | `unprivileged_bpf_disabled=1`, `bpf_jit_harden=2` |
 | Filesystem protections | `protected_fifos=2`, `protected_regular=2`, `suid_dumpable=0` |
 | Misc. attack surface | `sysrq=0`, `tty.ldisc_autoload=0`, FireWire storage modules blocked |
+| Copy Fail mitigation | `algif_aead` blocked, removing the kernel interface exploited by [CVE-2026-31431](https://nvd.nist.gov/vuln/detail/CVE-2026-31431) (defense in depth on top of kernel updates) |
 | Core dumps | Disabled via systemd-coredump and `limits.d` to prevent credential leakage from crashed processes |
 
 #### Authentication and Accounts
