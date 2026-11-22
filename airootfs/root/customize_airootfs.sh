@@ -40,6 +40,10 @@ mkdir -p /root/Desktop /root/Documents /root/Downloads /root/Music /root/Picture
 # Open Dolphin on file open
 xdg-mime default org.kde.dolphin.desktop inode/directory
 
+# Strip a package-database field written by the build host's newer pacman,
+# which otherwise prints a warning for every package in the live session.
+sed -i '/^%INSTALLED_DB%$/,/^$/d' /var/lib/pacman/local/*/desc
+
 # Live session user. LightDM logs it in automatically (lightdm.conf.d/50-auricos-live.conf).
 # Its password is locked: autologin doesn't need one, and nobody can log in as it remotely.
 # The installer deletes this user and every file below (shellprocess_cleanup.conf).

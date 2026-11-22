@@ -1,0 +1,19 @@
+#!/bin/bash
+# Run by the installer (shellprocess@pins) after the optional software is
+# downloaded. Pins optional apps to the Docklike taskbar, but only the ones
+# that were actually installed, so the taskbar never shows a missing app.
+set -euo pipefail
+
+RC=.config/xfce4/panel/docklike-2.rc
+HOME_DIR=$(getent passwd 1000 | cut -d: -f6)
+
+pin() {
+    local id=$1
+    [ -f "/usr/share/applications/$id.desktop" ] || return 0
+    for rc in "/etc/skel/$RC" "$HOME_DIR/$RC"; do
+        [ -f "$rc" ] || continue
+        grep -q "$id" "$rc" || sed -i "s/^pinned=/pinned=$id;/" "$rc"
+    done
+}
+
+pin org.torproject.torbrowser-launcher

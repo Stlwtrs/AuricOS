@@ -87,12 +87,12 @@ AuricOS was developed with substantial assistance from **Claude** (Anthropic's A
 | Area | What AuricOS delivers |
 | --- | --- |
 | **Installer** | Branded Calamares 3.4.2 installer with a custom navy-and-gold theme, slideshow, password policy, an optional-software page, and an automated post-install hardening and cleanup stage |
-| **Security toolkit** | Optional penetration-testing tools (Metasploit, Wireshark, hashcat, John the Ripper, Hydra, sqlmap, gobuster, Impacket, pwntools), selected in the installer and downloaded during installation |
+| **Security toolkit** | Optional penetration-testing tools (Metasploit, Wireshark, hashcat, John the Ripper, Hydra, sqlmap, gobuster, Impacket, pwntools, GDB, smbclient), selected in the installer and downloaded during installation |
 | **Hardening** | Default-deny firewall, AppArmor MAC, 25 kernel and network sysctl controls, auditd with a custom ruleset, AIDE file integrity monitoring, PAM password-quality enforcement, and more |
 | **Measured security** | Lynis hardening index raised from **64 → 78**; suggestions reduced from **30 → 13**, with every remaining item documented |
 | **Kernel** | CachyOS `linux-cachyos-bore` kernel on an Arch Linux base, with repository priority configured so only the kernel comes from CachyOS |
 | **Supply chain** | AUR packages built in clean chroots, PGP-verified upstream sources, served from a local signed-off repository |
-| **Privacy** | Mullvad Browser, Tor Browser, and LibreWolf preinstalled; SSH disabled; root account locked |
+| **Privacy** | Mullvad Browser and LibreWolf preinstalled, Tor Browser optional at install; SSH disabled; root account locked |
 | **Desktop** | XFCE with a custom panel layout, Alacritty terminal (transparent, gold palette), zsh, fastfetch, and a unified wallpaper and login theme |
 
 ---
@@ -228,9 +228,9 @@ Lynis still reports 13 suggestions. Each one was reviewed and either accepted as
 | Desktop | XFCE with Whisker Menu, Docklike taskbar, LightDM GTK greeter |
 | Shell and terminal | zsh, Alacritty (0.85 opacity, custom gold palette), fastfetch |
 | Theme | Adwaita-dark, Papirus-Dark icons, Inter and JetBrains Mono fonts |
-| Browsers | Mullvad Browser, Tor Browser, LibreWolf |
+| Browsers | Mullvad Browser, LibreWolf; Tor Browser optional at install |
 | Security tooling | Lynis, arch-audit, AIDE, auditd, AppArmor, ufw, nmap, tcpdump, rkhunter, CopyFix, USBSnitch, hextcp |
-| Optional at install | Metasploit Framework, Wireshark, hashcat, John the Ripper, Hydra, sqlmap, gobuster, Impacket, pwntools |
+| Optional at install | Metasploit Framework, Wireshark, hashcat, John the Ripper, Hydra, sqlmap, gobuster, Impacket, pwntools, GDB, smbclient, Tor Browser |
 
 ### Installer Pipeline
 
@@ -239,7 +239,7 @@ The installer is Calamares 3.4.2 with a custom module sequence. The `exec` phase
 ```text
 partition → mount → unpackfs → shellprocess@kernel → shellprocess@cleanup
 → machineid → fstab → locale → keyboard → localecfg → users
-→ shellprocess@lockroot → networkcfg → packages → hwclock → initcpiocfg → initcpio
+→ shellprocess@lockroot → networkcfg → packages → shellprocess@pins → hwclock → initcpiocfg → initcpio
 → grubcfg → bootloader → umount
 ```
 
@@ -262,7 +262,7 @@ Additional installer configuration:
 
 - **`users.conf`:** root password disabled, password requirements, `wheel` as the sudo group, `auricos` as the default hostname
 - **`grubcfg.conf`:** injects the AppArmor `lsm=` kernel parameter
-- **`netinstall.conf` and `packages.conf`:** an *Optional software* page whose selections are downloaded from the Arch mirrors after the cleanup stage, so they install with a fresh keyring and without the build-time repository. Offline installs skip them and still succeed. Keeping these tools off the ISO keeps it under GitHub's 2 GiB release-file limit
+- **`netinstall.conf` and `packages.conf`:** an *Optional software* page whose selections are downloaded from the Arch mirrors after the cleanup stage, so they install with a fresh keyring and without the build-time repository. Offline installs skip them and still succeed. Keeping these tools off the ISO keeps it under GitHub's 2 GiB release-file limit. A final `shellprocess@pins` stage pins Tor Browser to the taskbar only if it was installed
 - **`initcpio.conf`:** builds initramfs for every installed kernel, independent of kernel package name
 - **Branding:** custom sidebar colors, logo, and a QML slideshow shown during installation
 

@@ -24,4 +24,5 @@ file_permissions=(
   ["/usr/local/bin/livecd-sound"]="0:0:755"
   ["/usr/local/bin/auric-install-kernel"]="0:0:755"
   ["/usr/local/bin/auric-restrict-compilers"]="0:0:755"
+  ["/usr/local/bin/auric-pin-optional-apps"]="0:0:755"
 )

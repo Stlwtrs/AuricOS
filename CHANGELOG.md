@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - UEFI installation tested in QEMU/KVM with OVMF, including booting through the fallback path when firmware boot entries are lost
 
 ### Changed
+- GDB, smbclient and Tor Browser moved to the installer's optional-software page (Tor Browser as its own group). Tor Browser is pinned to the taskbar only when installed, and no longer pinned in the live session
 - Live initramfs: network-boot (PXE) hooks removed and modules decompressed before xz compression, shrinking the boot image (stored twice on the ISO, for BIOS and UEFI)
 - Metasploit, Wireshark, hashcat, John the Ripper, Hydra, sqlmap, gobuster, Impacket and pwntools moved off the ISO to the installer's optional-software page, and the ISO's filesystem switched from zstd to xz compression, to fit under GitHub's 2 GiB release-file limit
 - Boot menus on BIOS and UEFI now say AuricOS instead of "Arch Linux install medium"
@@ -40,6 +41,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Per-round hardening records in `docs/hardening/`, and `scripts/lynis-capture.sh` for saving sanitized Lynis reports to `docs/lynis/`
 
 ### Fixed
+- `%INSTALLED_DB%` warnings on every `pacman` command in the live session (already fixed on installed systems)
 - Root password re-enabled by the installer's users step after cleanup had locked it
 - Installed systems using bash instead of zsh
 - Package database warnings caused by a build-host pacman field (`%INSTALLED_DB%`)
