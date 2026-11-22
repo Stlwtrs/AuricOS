@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - UEFI installation tested in QEMU/KVM with OVMF, including booting through the fallback path when firmware boot entries are lost
 
 ### Changed
+- Live initramfs: network-boot (PXE) hooks removed and modules decompressed before xz compression, shrinking the boot image (stored twice on the ISO, for BIOS and UEFI)
 - Metasploit, Wireshark, hashcat, John the Ripper, Hydra, sqlmap, gobuster, Impacket and pwntools moved off the ISO to the installer's optional-software page, and the ISO's filesystem switched from zstd to xz compression, to fit under GitHub's 2 GiB release-file limit
 - Boot menus on BIOS and UEFI now say AuricOS instead of "Arch Linux install medium"
 - Images resized to the largest size they're shown at (wallpapers 3840 px wide, installer slides 1920 px, logos 1024 px), cutting them from 106 MB to 16 MB with no visible quality loss
