@@ -17,7 +17,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - **Hardening round 1 (Lynis 64 → 72):** ufw default-deny firewall; AppArmor enabled via kernel parameter; auditd; 25 kernel and network sysctl controls; core dumps disabled; `arch-audit` and Lynis included
 - **Hardening round 2 (Lynis 72 → 75):** login banner; `umask 027`; yescrypt cost factor 7; `pam_pwquality`; dccp, sctp, rds, tipc and FireWire modules blocked; compilers restricted to `wheel` with a pacman hook; sysstat
 - **Hardening round 3 (Lynis 75 → 78):** auditd ruleset (16 rules); AIDE file integrity monitoring built from a PGP-verified source; ufw `log_martians` override fixed; `sshd_config` restricted to `600`
+- **Hardening round 4 (Lynis 78, unchanged):** `algif_aead` blocked as a Copy Fail (CVE-2026-31431) mitigation; CopyFix, USBSnitch and hextcp bundled as clean-chroot Arch packages, with `copyfix.timer` and `usb-snitch.service` enabled; AIDE database excluded from its own checks
 - Root account locked on all installations; SSH disabled by default
+
+### Documentation
+- Per-round hardening records in `docs/hardening/`, and `scripts/lynis-capture.sh` for saving sanitized Lynis reports to `docs/lynis/`
 
 ### Fixed
 - Root password re-enabled by the installer's users step after cleanup had locked it
